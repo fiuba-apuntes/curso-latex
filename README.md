@@ -17,8 +17,9 @@ Para trabajar con LaTeX se necesitan principalmente 2 elementos:
 * un editor de texto para escribir el documento.
 
 ### Distribución TeX/LaTeX
-* [TeX Live](http://www.tug.org/texlive/) :penguin:
 * [MiKTeX](http://www.miktex.org) :computer:
+* [TeX Live](http://www.tug.org/texlive/) :penguin:
+* [MacTeX](https://tug.org/mactex/) :apple:
 
 ### Editores de textos
 Se puede usar cualquier editor de texto como Bloc de Notas o similares.
@@ -27,10 +28,10 @@ autocompletado, atajos de macros, entre otras cosas.
 
 * **[Texmaker](http://www.xm1math.net/texmaker/) :computer: :penguin: :apple:**
 * **[TeXstudio](http://www.texstudio.org/) :computer: :penguin: :apple: :** fork
-  de Texmaker, con muchas mejoras
+  de Texmaker, con muchas mejoras.
 * **[LyX](https://www.lyx.org/) :computer: :penguin: :apple: :** editor WYSIWYG
   (acrónimo de "What You See Is What You Get" -en español, "lo que ves es lo que
-  obtienes"-)
+  obtienes"-).
 
 ### Editores de LaTeX online
 Estos editores tienen la ventaja de que no requiere de la instalación de
