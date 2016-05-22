@@ -1,6 +1,6 @@
 # Bienvenidos al curso de LaTeX
 
-##### [Referencias de emojis](#referencias-de-emojis)
+**[Referencias de emojis](#referencias-de-emojis)**
 
 ## ¿Qué es LaTeX?
 Es un **sistema de composición de textos**, orientado a la creación de
@@ -18,17 +18,17 @@ Para trabajar con LaTeX se necesitan principalmente 2 elementos:
 
 ### Distribución TeX/LaTeX
 * [TeX Live](http://www.tug.org/texlive/) :penguin:
-* [MiKTeX](http://www.miktex.org) :notebook:
+* [MiKTeX](http://www.miktex.org) :computer:
 
 ### Editores de textos
 Se puede usar cualquier editor de texto como Bloc de Notas o similares.
 Sin embargo, hay editores especializados para LaTeX que tiene color de sintaxis,
 autocompletado, atajos de macros, entre otras cosas.
 
-* **[Texmaker](http://www.xm1math.net/texmaker/) :notebook: :penguin: :apple:**
-* **[TeXstudio](http://www.texstudio.org/) :notebook: :penguin: :apple: :** fork
+* **[Texmaker](http://www.xm1math.net/texmaker/) :computer: :penguin: :apple:**
+* **[TeXstudio](http://www.texstudio.org/) :computer: :penguin: :apple: :** fork
   de Texmaker, con muchas mejoras
-* **[LyX](https://www.lyx.org/) :notebook: :penguin: :apple: :** editor WYSIWYG
+* **[LyX](https://www.lyx.org/) :computer: :penguin: :apple: :** editor WYSIWYG
   (acrónimo de "What You See Is What You Get" -en español, "lo que ves es lo que
   obtienes"-)
 
@@ -48,9 +48,8 @@ sitios muy valiosos:
 
 ## Referencias de Emojis
 
-* :notebook: = Windows
+* :computer: = Windows
 * :penguin: = Linux
 * :apple: = Apple
-* :window:
 
 [:arrow_up:](#bienvenidos-al-curso-de-latex)
