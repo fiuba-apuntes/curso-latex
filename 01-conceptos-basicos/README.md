@@ -1,5 +1,18 @@
 # Conceptos básicos
 
+## Indice
+* [Lenguaje LaTeX](#lenguaje-latex)
+  + [Caracteres reservados](#caracteres-reservados)
+  + [Grupos](#grupos)
+  + [Comandos](#comandos)
+  + [Entornos](#entornos)
+  + [Comentarios](#comentarios)
+* [Estructura general](#estructura-general)
+  + [Preambulo](#preambulo)
+    - [Clase del documento](#clase-del-documento)
+    - [Paquetes](#paquetes)
+  + [Documento](#documento)
+
 ## Lenguaje LaTeX
 Los archivos LaTeX se escriben en texto plano, pudiendo usar cualquier editor
 de texto.
@@ -8,6 +21,7 @@ componer el texto.
 Los archivos LaTeX se suelen guardar con la extensión `.tex`.
 
 Un ejemplo mínimo es el siguiente:
+
 ```latex
 \documentclass{article}
 
@@ -19,12 +33,14 @@ Hello world!
 ### Caracteres reservados
 Los siguientes caracteres están reservados para el lenguaje LaTeX.
 En caso de introducirlos directamente, no se mostrará en el documento.
+
 ```
 # $ % ^ & _ { } ~ \
 ```
 
 Para poder usar estos caracteres en el documento, se debe agregar una barra
 invertida como prefijo.
+
 ```latex
 \# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash{}
 ```
@@ -38,7 +54,7 @@ los saltos de línea.
 En el modo matemático, se puede usar `\` sin necesidad de prefijo alguno.
 
 ### Grupos
-A veces, un cierto estado que debe tener un alcance limitado.
+A veces, un cierto estado debe tener un alcance limitado.
 Se puede hacer encerrando entre llaves la parte que debe tener el estado dado.
 En algunos casos, el uso de llaves no será posible.
 LaTeX proporciona `\bgroup` y `\egroup` para comenzar y finalizar un grupo,
@@ -61,8 +77,8 @@ y puede tener uno de los siguientes formatos.
 
 Algunos comandos necesitan argumentos, que se ingresan entre llaves `{}`
 después del nombre del comando.
-Algunos comandos permiten parámetros opcionales, se agregan después del nombre
-del comando entre corchetes `[]`.
+Los comandos pueden permitir parámetros opcionales, se agregan después del
+nombre del comando entre corchetes `[]`.
 
 ```latex
 \nombrecomando[opcion1,opcion2,...]{argumento1}{argumento2}
@@ -100,3 +116,73 @@ principio de la línea siguiente.
 
 Esto es útil para escribir comentarios y notas en el archivo LaTeX, que no se
 desean mostrar en el documento final.
+
+## Estructura general
+La estructura general de un archivo LaTeX es la siguiente:
+
+```latex
+\documentclass{...}
+
+% preambulo
+
+\begin{document}
+
+% contenido del documento
+
+\end{document}
+```
+
+El área entre `\documentclass{...}` y `\begin{document}` es el preámbulo.
+Contiene los comandos que afectan a todo el documento.
+El área entre `\begin{document}` y `\end{document}` contiene el texto del
+documento.
+
+### Preambulo
+
+#### Clase del documento
+LaTeX necesita saber el tipo de documento que se va a crear.
+Esto se especifica con el comando
+
+```latex
+\documentclass[options]{class}
+```
+
+La clase (_class_) especifica el tipo de documento que va a ser creado.
+Las opciones personaliza el comportamiento de la clase de documento.
+
+Ejemplo:
+
+```latex
+\documentclass[11pt,twoside,a4paper]{article}
+```
+Indica que el documento sea interpretado como un artículo con un tamaño de
+fuente de 11 puntos de base, con un diseño adecuado para la impresión a doble
+faz y en papel A4.
+
+##### Clases más comunes
+* **article** - Para artículos en revistas científicas, informes breves,
+  documentación de los programas, etc.
+* **report** - Similar a _article_ pero para documentos más largos.
+* **book** - Para libros reales.
+
+##### Opciones más comunes
+* **10pt, 11pt, 12pt** - Tamaño base para la fuente. Por defecto es 10pt.
+* **a4paper, letterpaper, ...** - Tamaño del papel. El tamaño por defecto es
+  _letterpaper_.
+* **twoside, oneside** - Especifica si el documento es de simple faz o doble faz.
+  El valor por defecto para las clases _article_ y _report_ es _oneside_ y para
+  _book_ es _twoside_.
+
+#### Paquetes
+Extienden la funcionalidad de LaTex.
+Las distribuciones LaTeX incluyen una gran cantidad de paquetes preinstalados.
+Los paquetes se incluyen con el siguiente comando
+
+```latex
+\usepackage[opcion1,opcion2,opcion3]{paquete}
+```
+
+Los paquetes pueden permitir opciones para realizar ajustes o habilitar
+características especiales.
+
+### Documento
