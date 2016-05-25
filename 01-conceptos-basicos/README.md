@@ -12,6 +12,9 @@
     - [Clase del documento](#clase-del-documento)
     - [Paquetes](#paquetes)
   + [Documento](#documento)
+    - [Comandos de secciones](#comandos-de-secciones)
+    - [Formato de texto](#formato-de-texto)
+    - [Formato de párrafo](#formato-de-parrafo)
 
 ## Lenguaje LaTeX
 Los archivos LaTeX se escriben en texto plano, pudiendo usar cualquier editor
@@ -186,3 +189,88 @@ Los paquetes pueden permitir opciones para realizar ajustes o habilitar
 características especiales.
 
 ### Documento
+#### Comandos de secciones
+Ejemplo de secciones:
+
+```latex
+\chapter{Introducción}
+Contenido del capítulo...
+
+\section{Estructura}
+Contenido de la sección...
+
+\subsection{Primer cuestion}
+Contenido de la subsección...
+
+\subsubsection{Información}
+Contenido de la subsubsección...
+```
+
+
+Además, no es necesario crear entornos con los comandos `\begin` y `\end` para
+indicar que el contenido pertenece a un bloque.
+
+LaTeX provee 7 niveles de profundidad para secciones.
+
+| Comando                         | Nivel | Comentario                |
+| ------------------------------- | ----- | ------------------------- |
+| `\part{Parte}`                  | -1    |                           |
+| `\chapter{Capítulo}`            | 0     | Sólo en _book_ y _report_ |
+| `\section{Sección}`             | 1     |                           |
+| `\subsection{Subsección}`       | 2     |                           |
+| `\subsubsection{Subsubsección}` | 3     |                           |
+| `\paragraph{Párrafo}`           | 4     |                           |
+| `\subparagraph{Subpárrafo}`     | 5     |                           |
+
+También se cuenta con comando `\appendix` para indicar que las secciones que se
+encuentren posteriormente se enumeren como apéndice
+
+##### Numeración de las secciones
+La numeración de las secciones se realiza automáticamente por LaTeX, no es
+necesario agregarla de forma explícita, sólo hay que introducir el título
+entre las llaves.
+Las partes se numeran con números romanos (Parte I, Parte II, etc.); capítulos y
+secciones con números decimales y los apéndices con letras (A, B, C, etc.)
+
+Si se desea incluir una sección sin numeración, se debe agregar el sufijo `*` al
+comando de la sección, antes de los asteriscos.
+
+```latex
+\subsection*{Introducción}
+```
+
+#### Formato de texto
+##### Marcas de citas
+```latex
+`cita simple' en LaTeX
+``cita doble'' en LaTeX
+,,cita alemán'' en LaTeX
+<<cita francés>> en Latex
+```
+
+##### Superscript y subscript
+Se encuentran disponible los comandos `\textsubscript{}` y `\textsuperscript{}`.
+
+```latex
+1\textsuperscript{er} oración
+2\textsuperscript{da} oración
+...
+```
+
+##### Guiones
+LaTeX conoce cuatro tipos de guiones: guión (-), guión corto (–), guión largo
+(—) y signo menos (−)
+
+| Nombre             | Entrada | Salida | Propósito                  |
+| ------------------ | ------- | ------ | -------------------------- |
+| Guión              | -       | -      | Entre palabras             |
+| Guión corto        | --      | –      | Rango de páginas, ej. 1–12 |
+| Guión largo o raya | ---     | —      | Guión de puntuación        |
+| Signo menos        | $-$     | −      | Signo menos matemático     |
+
+##### Elipsis
+Es una secuencia de tres puntos que se suele utilizar para indicar texto omitido.
+El espaciado es diferenta al de la inserción de tres puntos.
+LaTeX provee el comando especial `\ldots` para estos puntos.
+
+#### Formato de párrafo
