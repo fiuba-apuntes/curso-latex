@@ -14,7 +14,7 @@
   + [Documento](#documento)
     - [Comandos de secciones](#comandos-de-secciones)
     - [Formato de texto](#formato-de-texto)
-    - [Formato de párrafo](#formato-de-parrafo)
+    - [Formato de párrafo](#formato-de-párrafo)
 
 ## Lenguaje LaTeX
 Los archivos LaTeX se escriben en texto plano, pudiendo usar cualquier editor
@@ -206,7 +206,6 @@ Contenido de la subsección...
 Contenido de la subsubsección...
 ```
 
-
 Además, no es necesario crear entornos con los comandos `\begin` y `\end` para
 indicar que el contenido pertenece a un bloque.
 
@@ -245,7 +244,7 @@ comando de la sección, antes de los asteriscos.
 `cita simple' en LaTeX
 ``cita doble'' en LaTeX
 ,,cita alemán'' en LaTeX
-<<cita francés>> en Latex
+<<cita francés>> en LaTeX
 ```
 
 ##### Superscript y subscript
@@ -261,16 +260,16 @@ Se encuentran disponible los comandos `\textsubscript{}` y `\textsuperscript{}`.
 LaTeX conoce cuatro tipos de guiones: guión (-), guión corto (–), guión largo
 (—) y signo menos (−)
 
-| Nombre             | Entrada | Salida | Propósito                  |
-| ------------------ | ------- | ------ | -------------------------- |
-| Guión              | -       | -      | Entre palabras             |
-| Guión corto        | --      | –      | Rango de páginas, ej. 1–12 |
-| Guión largo o raya | ---     | —      | Guión de puntuación        |
-| Signo menos        | $-$     | −      | Signo menos matemático     |
+| Nombre             | Entrada | Salida | Propósito                         |
+| ------------------ | ------- | ------ | --------------------------------- |
+| Guión              | -       | -      | Entre palabras, ej. ex-presidente |
+| Guión corto        | --      | –      | Rango de páginas, ej. 1–12        |
+| Guión largo o raya | ---     | —      | Guión de puntuación               |
+| Signo menos        | $-$     | −      | Signo menos matemático            |
 
 ##### Elipsis
 Es una secuencia de tres puntos que se suele utilizar para indicar texto omitido.
-El espaciado es diferenta al de la inserción de tres puntos.
-LaTeX provee el comando especial `\ldots` para estos puntos.
+El espaciado es diferente al de la inserción de tres puntos.
+LaTeX provee el comando especial `\ldots` para elipsis.
 
 #### Formato de párrafo

@@ -46,6 +46,7 @@ Hay mucho material para aprender sobre LaTeX, se listarán a continuación algun
 sitios muy valiosos:
 
 * [Wikibook de LaTeX](https://en.wikibooks.org/wiki/LaTeX)
+* [Wikibook de LaTeX en español](https://es.wikibooks.org/wiki/LaTeX)
 
 ## Referencias de Emojis
 
