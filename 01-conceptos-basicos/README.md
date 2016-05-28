@@ -15,6 +15,7 @@
     - [Comandos de secciones](#comandos-de-secciones)
     - [Formato de texto](#formato-de-texto)
     - [Formato de párrafo](#formato-de-párrafo)
+* [Ejercicio](#ejercicio)
 
 ## Lenguaje LaTeX
 Los archivos LaTeX se escriben en texto plano, pudiendo usar cualquier editor
@@ -379,6 +380,36 @@ Las listas se pueden anidar simplemente agregando nuevos entornos:
 \end{tipo_de_lista}
 ```
 
+##### Notas al pie
+En LaTeX se pueden agregar notas al pie con el comando
+
+```latex
+\footnote{Texto de la nota al pie}
+```
+
+Ejemplo:
+```latex
+... y, de hecho, el mal entendimiento respecto del carácter puramente existencial del axioma de elección ha llevado a muchas discusiones estériles durante algunas décadas\footnote{cf. F. P. Ramsey. \textit{The foundations of Mathematics}, London Mathematical Society.}
+```
+
+La nota al pie puede recibir una opción donde se indica cuál va a ser la marca.
+
+```latex
+\footnote[3]{Texto de la nota al pie}
+```
+
+Por defecto las notas al pie se numeran con numeración arábica.
+Esto se puede personalizar.
+
+```latex
+\renewcommand{\thefootnote}{\arabic{footnote}}   % Numeración arábiga: 1, 2, 3...
+\renewcommand{\thefootnote}{\roman{footnote}}    % Numeración romana en minúsculas: i, ii, iii...
+\renewcommand{\thefootnote}{\Roman{footnote}}    % Numeración romana en mayúsculas: I, II, III...
+\renewcommand{\thefootnote}{\alph{footnote}}     % Numeración alfabética en minúsculas a, b, c...
+\renewcommand{\thefootnote}{\Alph{footnote}}     % Numeración alfabética en mayúsculas: A, B, C...
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} % No números, sino símbolos diversos
+```
+
 ##### Partición de palabras
 Cuando el texto llega al final de línea de la página, LaTeX partirá las palabras.
 Por defecto, LaTeX tendrá en cuenta la partición de palabras para el idioma inglés.
@@ -406,3 +437,11 @@ eso se utiliza `mbox{}`.
 ```latex
 \mbox{bioaerosol}
 ```
+
+## Ejercicio
+Buscar una receta de cocina (por ejemplo, locro patrio) y transcribirlo en un
+documento LaTeX que cumpla las siguientes condiciones:
+* utilizar por lo menos 2 tipos de secciones diferentes.
+* utilizar listas, por lo menos una de bullets y otra numerada.
+* dar formato al texto (negrita, cursiva, etc.) donde se considere conveniente.
+* indicar la fuente (sitio web) en la que se obtuvo la receta, en una nota al pie.
