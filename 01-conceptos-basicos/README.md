@@ -189,6 +189,7 @@ Los paquetes pueden permitir opciones para realizar ajustes o habilitar
 características especiales.
 
 ### Documento
+
 #### Comandos de secciones
 Ejemplo de secciones:
 
@@ -239,6 +240,61 @@ comando de la sección, antes de los asteriscos.
 ```
 
 #### Formato de texto
+
+##### Familia
+La familia es una colección de fuentes.
+Latex organiza las fuentes en tres familias.
+
+| Nombre     | Comando LaTeX  | Equivalente a     | Comentarios          |
+| ---------- | -------------- | ----------------- | -------------------- |
+| Roman      | `\textrm{...}` | `{\rmfamily ...}` | Fuente Serif         |
+| Sans Serif | `\textsf{...}` | `{\sffamily ...}` | Fuente Sans Serif    |
+| Teletype   | `\texttt{...}` | `{\ttfamily ...}` | Fuente monoespaciada |
+
+##### Serie
+La serie de una fuente determina que tan gruesa o expandida será.
+
+| Nombre | Comando LaTeX  | Equivalente a     | Comentarios            |
+| ------ | -------------- | ----------------- | ---------------------- |
+| Bold   | `\textbf{...}` | `{\bfseries ...}` |                        |
+| Medium | `\textmd{...}` | `{\mdseries ...}` | Entre normal y bold    |
+| Light  | `\textlf{...}` | `{\lfseries ...}` | Más fina que la normal |
+
+##### Forma
+La forma que puede tener un caracter dentro de una familia.
+
+| Nombre         | Comando LaTeX  | Equivalente a    | Comentarios              |
+| -------------- | -------------- | ---------------- | ------------------------ |
+| Upright        | `\textup{...}` | `{\upshape ...}` | Igual a la fuente normal |
+| Italic         | `\textit{...}` | `{\itshape ...}` |                          |
+| Slanted        | `\textsl{...}` | `{\slshape ...}` |                          |
+| Small Capitals | `\textsc{...}` | `{\scshape ...}` |                          |
+
+##### Otros comandos de estilos
+
+| Nombre    | Comando LaTeX      | Equivalente a       | Comentarios                  |
+| --------- | ------------------ | ------------------- | ---------------------------- |
+| Normal    | `\textnormal{...}` | `{\normalfont ...}` | Fuente normal                |
+| Emphasis  | `\emph{...}`       | `{\em ...}`         | Generalmente itálica         |
+| Uppercase | `\uppercase{...}`  |                     | Todo el texto en mayúsculas  |
+| Lowercase | `\lowercase{...}`  |                     |  Todo el texto en mayúsculas |
+| Underline | `\underline{...}`  |                     | Subrayado                    |
+
+##### Tamaños
+
+| Comando               |
+| --------------------- |
+| `{\tiny ...}`         |
+| `{\scriptsize ...}`   |
+| `{\footnotesize ...}` |
+| `{\small ...}`        |
+| `{\normalsize ...}`   |
+| `{\large ...}`        |
+| `{\Large ...}`        |
+| `{\LARGE ...}`        |
+| `{\huge ...}`         |
+| `{\Huge ...}`         |
+
 ##### Marcas de citas
 ```latex
 `cita simple' en LaTeX
@@ -273,3 +329,80 @@ El espaciado es diferente al de la inserción de tres puntos.
 LaTeX provee el comando especial `\ldots` para elipsis.
 
 #### Formato de párrafo
+
+##### Alineación
+La alineación por defecto de los párrafos en latex es el justificado.
+Para otros tipos de alineación se disponen de entornos y comandos.
+
+| Alineación | Entorno LaTeX | Comando              |
+| ---------- | ------------- | -------------------- |
+| Izquierda  | `flushleft`   | `{\raggedright ...}` |
+| Derecha    | `flushright`  | `{\raggedleft ...}`  |
+| Centrada   | `center`      | `{\centering ...}`   |
+
+Ejemplo
+```latex
+\begin{flushright}
+  texto alineado hacia la derecha
+\end{flushright}
+```
+
+##### Estructuras de lista
+Las listas son entornos que pueden ser de tres tipos:
+* `itemize` para listas con bullets
+* `enumerate` para listas numeradas
+* `description` para listas descriptivas
+
+Formato básico:
+
+```latex
+\begin{tipo_de_lista}
+  \item Primer item
+  \item Segundo item
+  \item Tercer item
+  \item \ldots
+\end{tipo_de_lista}
+```
+
+Las listas se pueden anidar simplemente agregando nuevos entornos:
+
+```latex
+\begin{tipo_de_lista}
+  \item Primer item
+  \item Segundo item
+  \begin{tipo_de_lista_anidada}
+    \item Primer item anidado
+    \item Segundo item anidado
+  \end{tipo_de_lista_anidada}
+  \item Tercer item
+  \item \ldots
+\end{tipo_de_lista}
+```
+
+##### Partición de palabras
+Cuando el texto llega al final de línea de la página, LaTeX partirá las palabras.
+Por defecto, LaTeX tendrá en cuenta la partición de palabras para el idioma inglés.
+Para otros idiomas se debe cargar el paquete `babel` e indicar el idioma que va
+a utilizar el documento.
+
+```latex
+\usepackage[spanish]{babel}
+```
+
+Aún asi, puede ocurrir que algunas palabas no las particione correctamente.
+Para ello, en el preambulo se agrega el comando `\hyphenation` con la forma
+correcta en que se particionan.
+
+```latex
+\hyphenation{ne-o-or-to-do-xia bi-o-a-e-ro-sol}
+```
+
+En el ejemplo se provee la partición correcta para las palabras "neoortodoxia" y
+"bioaerosol".
+
+Ahora puede ocurrir que no deseamos que una palabra sea partida por LaTeX, para
+eso se utiliza `mbox{}`.
+
+```latex
+\mbox{bioaerosol}
+```
