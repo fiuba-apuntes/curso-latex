@@ -389,7 +389,10 @@ En LaTeX se pueden agregar notas al pie con el comando
 
 Ejemplo:
 ```latex
-... y, de hecho, el mal entendimiento respecto del carácter puramente existencial del axioma de elección ha llevado a muchas discusiones estériles durante algunas décadas\footnote{cf. F. P. Ramsey. \textit{The foundations of Mathematics}, London Mathematical Society.}
+... y, de hecho, el mal entendimiento respecto del carácter puramente existencial
+del axioma de elección ha llevado a muchas discusiones estériles durante algunas
+décadas\footnote{cf. F. P. Ramsey. \textit{The foundations of Mathematics},
+London Mathematical Society.}
 ```
 
 La nota al pie puede recibir una opción donde se indica cuál va a ser la marca.
