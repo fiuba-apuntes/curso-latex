@@ -30,7 +30,7 @@ Un ejemplo mínimo es el siguiente:
 \documentclass{article}
 
 \begin{document}
-Hello world!
+¡Hola mundo!
 \end{document}
 ```
 
