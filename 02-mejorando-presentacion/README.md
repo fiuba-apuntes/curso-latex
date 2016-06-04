@@ -2,10 +2,15 @@
 
 ## Indice
 * [Tabla de contenidos](#tabla-de-contenidos)
-* [Carátula](#caratula)
+* [Carátula](#carátula)
+  + [Carátula personalizada](#carátula-personalizada)
+* [Gráficos](#gráficos)
+  + [Tipos de gráficos](#tipos-de-gráficos)
+  + [Paquete `graphicx`](#paquete-graphicx)
+  + [Formato de imágenes soportados](#formato-de-imágenes-soportados)
+  + [Incluir gráficos en el documento](#incluir-gráficos-en-el-documento)
+  + [Entorno de Figuras](#entorno-de-figuras)
 * [Tablas](#tablas)
-* [Gráficos](#graficos)
-* [Figuras](#figuras)
 
 ## Tabla de contenidos
 Para incluir un índice de contenido al documento LaTeX, sólo hay que invocar al
@@ -67,8 +72,79 @@ carátula estandar de LaTeX:
   un salto de página manualmente.
 * La página de la carátula no es numerada.
 
-## Tablas
-
 ## Gráficos
 
-## Figuras
+### Tipos de gráficos
+Previamente debemos distinguir los tipos de imágenes que existen:
+* **[Imagen de píxeles o mapa de bits](https://es.wikipedia.org/wiki/Imagen_de_mapa_de_bits):**
+  Representa la imagen con una matriz de los colores de cada pixel.
+  Algunos formatos populares:
+  [JPG](https://es.wikipedia.org/wiki/Joint_Photographic_Experts_Group),
+  [PNG](https://es.wikipedia.org/wiki/Portable_Network_Graphics).
+
+* **[Imágenes vectoriales](https://es.wikipedia.org/wiki/Gr%C3%A1fico_vectorial):**
+  Representa la imagen con objetos geométricos independientes (segmentos,
+  polígonos, arcos, etc.), cada uno de ellos definido por distintos atributos
+  matemáticos de forma, de posición, de color, etc. Algunos formatos populares:
+  [PDF](https://es.wikipedia.org/wiki/PDF),
+  [EPS](https://es.wikipedia.org/wiki/PostScript_encapsulado).
+
+### Paquete `graphicx`
+LaTeX no provee funcionalidad nativa para incluir gráficos a los documentos.
+Para ello se debe incluir el paquete `graphicx` en el preambulo.
+
+```latex
+\usepackage{graphicx}
+```
+
+### Formato de imágenes soportados
+Las distribuciones de LaTeX suelen traer varios compiladores de archivos, cada
+uno con sus características. En particular, cada compilador es compatible con
+ciertos formatos de imágenes que pueden no serlo en otro compilador.
+
+* _latex_: Este compilador sólo es compatible con el formato EPS.
+  Para compilar con _latex_ será necesario convertir previamente las imágenes
+  al formato EPS.
+
+* _pdflatex_: Este compilador es compatible con JPG, PNG, PDF y EPS.
+
+### Incluir gráficos en el documento
+Una vez cargado el paquete `graphicx` en el preambulo, las imágenes se incluyen
+con el siguiente comando:
+
+```latex
+\includegraphics[atributo1=valor1,...,atributon=valorn]{nombre_imagen}
+```
+
+El nombre de la imagen se escribe sin la extensión del formato.
+Si se poseen múltiples formatos de una misma image, LaTeX elegirá el formato
+adecuado según el contexto.
+
+Las opciones más populares para ajustar un gráfico:
+
+| Option         | Comentario                                                    |
+| -------------- | ------------------------------------------------------------- |
+| `width=xx`     | Especifica el ancho preferido de la imagen a xx               |
+| `height=xx`    | Especifica el alto preferido de la imagen a xx                |
+| `scale=xx`     | Escala la imagen al factor de escala xx                       |
+| `angle=xx`     | Rota la imagen en un ángulo de xx grados (hacia la izquierda) |
+| `resolution=x` | Espeficica la resolución de impresión a x dpi                 |
+
+El orden en que son ingresadas las opciones es importante, caso contrario se
+pueden ignorar algunas opciones o no incluir la imagen en el documento.
+
+Por defecto, las imágenes son buscadas en el mismo directorio en el que se
+encuentra el archivo `.tex` que LaTeX está compilando.
+Si se almacenan las imágenes en un directorio diferente, se ofrece el comando
+`graphicspath` para indicar otros directorios donde LaTeX puede tomar las imágenes.
+
+```latex
+\graphicspath{ {/var/lib/images/} } % Ruta absoluta Unix
+\graphicspath{ {imagenes/}{./recursos/} } % Rutas relativas
+\graphicspath{ {c:\mypict~1\camera} } % Ruta absoluta Windows
+\graphicspath{ {c:/mypict~1/camera/} } % Funciona en Win XP en adelante
+```
+
+### Entorno de Figuras
+
+## Tablas
