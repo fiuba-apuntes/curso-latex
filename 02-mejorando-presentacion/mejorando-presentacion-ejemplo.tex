@@ -6,12 +6,12 @@
 
 \begin{document}
 
-% Ingreso contenido de la carátula estándar de Latex
+% Ingreso contenido de la caratula estándar de Latex
 \title{Un documento de ejemplo} % Título del documento
 \date{\today} % Fecha del documento. El comando \today inserta la fecha actual
 \author{Ing. Huergo\thanks{FIUBA}} % Autor del documento
 
-\maketitle % Genera la carátula
+\maketitle % Genera la caratula
 
 \newpage % Inicia una nueva página
 
@@ -38,7 +38,21 @@ Con este ejemplo se aprende sobre LaTeX:
 
 \subsection{Incluir un gráfico}
 
-\includegraphics[width=0.8\textwidth]{logo_uba}
+\begin{figure}[h]
+  \centering
+  \caption{Logo de la UBA}
+  \includegraphics[width=0.6\textwidth]{logo_uba}
+  \label{fig:logo_uba}
+\end{figure}
 
+Como se ve en la Figura \ref{fig:logo_uba}, el logo de la UBA posee el lema:
+
+\begin{center}
+  \textit{Argentum virtus robur et studium}
+
+  <<La virtud argentina es la fuerza y el estudio>>
+\end{center}
+
+\listoffigures
 
 \end{document}

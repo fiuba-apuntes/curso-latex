@@ -2,8 +2,8 @@
 
 ## Indice
 * [Tabla de contenidos](#tabla-de-contenidos)
-* [Carátula](#carátula)
-  + [Carátula personalizada](#carátula-personalizada)
+* [Caratula](#caratula)
+  + [Caratula personalizada](#caratula-personalizada)
 * [Gráficos](#gráficos)
   + [Tipos de gráficos](#tipos-de-gráficos)
   + [Paquete `graphicx`](#paquete-graphicx)
@@ -33,44 +33,48 @@ quiera incluir una sección no numerada, hay que incluirla manualmente.
 \addcontentsline{toc}{section}{Introducción}
 ```
 
-## Carátula
+**Observación:** por defecto el título del índice es _Contents_.
+Si se usa el paquete _babel_ configurado en el idioma español (es decir,
+`\usepackage[spanish]{babel}`), el título del índice se traduce a _Índice_.
+
+## Caratula
 Las clases de documentos estándares de LaTeX (article, book, etc) poseen estilos
-de carátulas propios. Sólo hay que ingresar los datos que se permite (y desea)
-incluir y luego generar la carátula.
+de caratulas propios. Sólo hay que ingresar los datos que se permite (y desea)
+incluir y luego generar la caratula.
 
 ```latex
 \title{Un documento de ejemplo} % Título del documento (obligatorio)
 \date{\today} % Fecha del documento, el comando \today inserta la fecha actual
 \author{Ing. Huergo\thanks{FIUBA}} % Autor del documento
 
-\maketitle % Genera la carátula
+\maketitle % Genera la caratula
 ```
 
 El título es obligatorio, mientras que el autor y la fecha son opcionales.
 Sin embargo, la fecha se imprime siempre. Si no se ingresa, se imprime la fecha
 de generación del documento.
 
-Un "defecto" de la carátula estándar es que imprime el numero de página en ella,
+Un "defecto" de la caratula estándar es que imprime el numero de página en ella,
 siendo lo normal que no se encuentre numerada.
 
-### Carátula personalizada
-Se pueden definir una carátula personalizada, haciendo uso del entorno
+### Caratula personalizada
+Se pueden definir una caratula personalizada, haciendo uso del entorno
 `titlepage`.
 
 ```latex
 \begin{titlepage}
 
-  % Contenido de la carátula personalizada
+  % Contenido de la caratula personalizada
 
 \end{titlepage}
 ```
 
-Crear la carátula con el entorno `titlepage` tiene varias ventajas sobre la
-carátula estandar de LaTeX:
+Crear la caratula con el entorno `titlepage` tiene varias ventajas sobre la
+caratula estandar de LaTeX:
 * Se puede presentar toda la información que se desee.
-* Dedica la primer hoja como carátula automáticamente, sin necesidad de agregar
+* Dedica la primer hoja como caratula automáticamente, sin necesidad de agregar
   un salto de página manualmente.
-* La página de la carátula no es numerada.
+* La página de la caratula no es numerada.
 
 ## Gráficos
 
@@ -91,7 +95,7 @@ Previamente debemos distinguir los tipos de imágenes que existen:
 
 ### Paquete `graphicx`
 LaTeX no provee funcionalidad nativa para incluir gráficos a los documentos.
-Para ello se debe incluir el paquete `graphicx` en el preambulo.
+Para ello se debe incluir el paquete `graphicx` en el preámbulo.
 
 ```latex
 \usepackage{graphicx}
@@ -109,7 +113,7 @@ ciertos formatos de imágenes que pueden no serlo en otro compilador.
 * _pdflatex_: Este compilador es compatible con JPG, PNG, PDF y EPS.
 
 ### Incluir gráficos en el documento
-Una vez cargado el paquete `graphicx` en el preambulo, las imágenes se incluyen
+Una vez cargado el paquete `graphicx` en el preámbulo, las imágenes se incluyen
 con el siguiente comando:
 
 ```latex
@@ -146,5 +150,55 @@ Si se almacenan las imágenes en un directorio diferente, se ofrece el comando
 ```
 
 ### Entorno de Figuras
+El entorno figura (que no es exclusivo para imágenes) permite agregar un
+subtítulo y una referencia a la figura mostrada.
+
+```latex
+\begin{figure}
+  \includegraphics[width=0.6\textwidth]{imagen}
+  \caption{Imagen}
+  \label{fig:imagen}
+\end{figure}
+```
+
+Las figuras son automáticamente numeradas según el comando `\caption` y pueden
+ser referidas a ellas en el cuerpo de un texto con el comando `\ref{fig:imagen}`,
+que inserta el número correspondiente a esa figura.
+
+Con el comando `\listoffigures` se puede agregar una lista de todas las figuras
+que se encuentran en el documento.
+
+El entorno de figura es reconocido por LaTeX como un elemento flotador.
+Un flotador es un contenedor de cosas que no se pueden fraccionar en una página.
+Esto significa que si un elemento flotador no entra en una página, se insertará
+en otra, según la configuración.
+
+El entorno de figura permite configurar con una opción el indicador de la posición.
+
+```latex
+\begin{figure}[p]
+  ···
+\end{figure}
+```
+
+| Indicador | Comentario                                                       |
+| --------- | ---------------------------------------------------------------- |
+| `h`       | Coloca aproximadamente en el mismo lugar donde se introduce en el texto original |
+| `t`       | Coloca en la parte superior (_top_) de la página                 |
+| `b`       | Coloca en la parte inferior (_bottom_) de la página              |
+| `p`       | Inserta la figura en una página especial de objetos flotadores   |
+| `!`       | Sobrescribe el parámetro de LaTeX que determina la mejor ubicación de los flotadores |
+| `H`       | Coloca el flotador en el mismo lugar en el código LaTeX. Requiere el paquete `float`. |
+
+Hay muchas posibilidades para posicionar las figuras como, por ejemplo, posicionar
+la figura con texto alrededor. Muchos casos requieren paquetes adicionales y se
+puede conocer su uso en el
+[Wikibook de LaTeX](https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions).
+
+**Observación:** por defecto el nombre de la figura usado por `\caption` es
+_Figure_ y el título del índice de figuras es _List of Figures_.
+Si se usa el paquete _babel_ configurado en el idioma español (es decir,
+`\usepackage[spanish]{babel}`), el nombre usado por `\caption` es _Figura_ y
+el título del índice de figuras se traduce a _Índice de figuras_.
 
 ## Tablas
