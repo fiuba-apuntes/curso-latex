@@ -41,6 +41,10 @@ Incluso poseen la funcionalidad de edición colaborativa.
 * [Overleaf](https://www.overleaf.com/)
 * [ShareLaTeX](https://es.sharelatex.com/)
 
+## Contenido del curso
+* [Unidad 1: Conceptos básicos](https://github.com/fiuba-apuntes/curso-latex/tree/master/01-conceptos-basicos)
+* [Unidad 2: Mejorando la presentación](https://github.com/fiuba-apuntes/curso-latex/tree/master/02-mejorando-presentacion)
+
 ## Recursos
 Hay mucho material para aprender sobre LaTeX, se listarán a continuación algunos
 sitios muy valiosos:
