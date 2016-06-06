@@ -11,6 +11,7 @@
   + [Incluir gráficos en el documento](#incluir-gráficos-en-el-documento)
   + [Entorno de Figuras](#entorno-de-figuras)
 * [Tablas](#tablas)
+  + [Entorno `table`](#entorno-table)
 
 ## Tabla de contenidos
 Para incluir un índice de contenido al documento LaTeX, sólo hay que invocar al
@@ -161,17 +162,23 @@ subtítulo y una referencia a la figura mostrada.
 \end{figure}
 ```
 
-Las figuras son automáticamente numeradas según el comando `\caption` y pueden
-ser referidas a ellas en el cuerpo de un texto con el comando `\ref{fig:imagen}`,
+Las figuras son automáticamente numeradas según el comando `\caption`.
+El comando `\label` sirve para darle a la figura un indicador único y poder
+ser referida a ella en el cuerpo de un texto con el comando `\ref{fig:imagen}`,
 que inserta el número correspondiente a esa figura.
+El identificador dentro de `\label` puede ser cualquier texto, pero por
+convención, se le añade el prefijo **fig:** para reconocer rápidamente que
+se está referenciando a una figura, útil cuando se utilizan referencias a
+diferente tipo de objetos.
 
 Con el comando `\listoffigures` se puede agregar una lista de todas las figuras
 que se encuentran en el documento.
 
-El entorno de figura es reconocido por LaTeX como un elemento flotador.
-Un flotador es un contenedor de cosas que no se pueden fraccionar en una página.
-Esto significa que si un elemento flotador no entra en una página, se insertará
-en otra, según la configuración.
+El entorno de figura es reconocido por LaTeX como un objeto flotante.
+Un objeto flotante es un contenedor de cosas que no se pueden fraccionar en una
+página.
+Esto significa que si un objeto flotante no entra en una página, se insertará
+en otra ubicación, según la configuración.
 
 El entorno de figura permite configurar con una opción el indicador de la posición.
 
@@ -186,9 +193,9 @@ El entorno de figura permite configurar con una opción el indicador de la posic
 | `h`       | Coloca aproximadamente en el mismo lugar donde se introduce en el texto original |
 | `t`       | Coloca en la parte superior (_top_) de la página                 |
 | `b`       | Coloca en la parte inferior (_bottom_) de la página              |
-| `p`       | Inserta la figura en una página especial de objetos flotadores   |
-| `!`       | Sobrescribe el parámetro de LaTeX que determina la mejor ubicación de los flotadores |
-| `H`       | Coloca el flotador en el mismo lugar en el código LaTeX. Requiere el paquete `float`. |
+| `p`       | Inserta la figura en una página especial de objetos flotantes    |
+| `!`       | Sobrescribe el parámetro de LaTeX que determina la mejor ubicación de los objetos flotantes |
+| `H`       | Coloca el objeto flotante en el mismo lugar en el código LaTeX. Requiere el paquete `float`. |
 
 Hay muchas posibilidades para posicionar las figuras como, por ejemplo, posicionar
 la figura con texto alrededor. Muchos casos requieren paquetes adicionales y se
@@ -201,4 +208,117 @@ Si se usa el paquete _babel_ configurado en el idioma español (es decir,
 `\usepackage[spanish]{babel}`), el nombre usado por `\caption` es _Figura_ y
 el título del índice de figuras se traduce a _Índice de figuras_.
 
+Si se desea darle otro nombre tanto al subtítulo como al titulo del índice,
+basta con renombrarlos en el preambulo del archivo.
+
+```latex
+\addto\captionsspanish{
+  \renewcommand\figurename{Gráfico}
+  \renewcommand\listfigurename{Lista de gráficos}
+}
+```
+
 ## Tablas
+Las tablas se construyen dentro del entorno `tabular` con un formato particular.
+
+```latex
+\begin{tabular}{formato}
+···
+\end{tabular}
+```
+
+El argumento `formato` indica la alineación de cada columna y las líneas
+verticales de las columnas.
+
+Los símbolos admitidos para especificar el formato son
+
+| Símbolo    | Significado                                                     |
+| ---------- | --------------------------------------------------------------- |
+| `l`        | Columna justificada hacia la izquierda                          |
+| `c`        | Columna centrada                                                |
+| `r`        | Columna justificada hacia la derecha                            |
+| `p{ancho}` | Columna con párrafo alineado verticalmente hacia arriba         |
+| `m{ancho}` | Columna con párrafo alineado verticalmente en el centro. Requiere el paquete `array`. |
+| `b{ancho}` | Columna con párrafo alineado verticalmente hacia abajo. Requiere el paquete `array`. |
+| `|`        | Línea vertical                                                  |
+| `||`       | Doble línea vertical                                            |
+
+Por defecto, LaTeX hará que las filas ocupen una sola línea. En caso de que el
+texto sea más largo del ancho de la página, la tabla se excedería de la página,
+mostrandose incompleta. Para eso se usan los símbolos `p`, `m` y `b`, junto con
+el ancho de la fila.
+
+El contenido del entorno `tabular` debe tener un formato construido con los
+simbolos que separan entre columnas, inician una fila, etc.
+
+| Símbolo       | Significado                                                  |
+| ------------- | ------------------------------------------------------------ |
+| `&`           | Separador de columna                                         |
+| `\\`          | Inicia una nueva fila                                        |
+| `\hline`      | Línea horizontal                                             |
+| `\newline`    | Inicia una nueva línea dentro de una celda                   |
+| `\cline{i-j}` | Línea horizontal parcial entre la columna `i` y la columna `j` |
+
+Un ejemplo de una tabla con una fila encabezado y todos los bordes.
+
+```latex
+\begin{tabular}{| l | c | r |}
+\hline
+Alpha & Beta & Gama \\
+\hline \hline
+1 & 2 & 3 \\
+\hline
+4 & 5 & 6 \\
+\hline
+\end{tabular}
+```
+
+Las tablas son muy personalizables y existen multitud de paquetes adicionales
+para mejorar el formato y estilo de las mismas.
+Pueden conocer más funcionalidades en el
+[Wikibook de LaTeX](https://en.wikibooks.org/wiki/LaTeX/Tables).
+
+### Entorno `table`
+Al igual que el entorno `figure`, el entorno `table` es un objeto flotante al
+que se le puede agregar un subtitulo y una referencia, como también ajustar
+su posicionamiento.
+
+```latex
+\begin{table}[h]
+  \centering
+  \begin{tabular}{formato}
+    ···
+  \end{tabular}
+  \caption{Tabla de ejemplo}
+  \label{tab:tabla}
+\end{table}
+```
+
+Las tablas son automáticamente numeradas según el comando `\caption`.
+El comando `\label` sirve para darle a la tabla un indicador único y poder
+ser referida a ella en el cuerpo de un texto con el comando `\ref{tab:tabla}`,
+que inserta el número correspondiente a esa tabla.
+El identificador dentro de `\label` puede ser cualquier texto, pero por
+convención, se le añade el prefijo **tab:** para reconocer rápidamente que
+se está referenciando a una tabla, útil cuando se utilizan referencias a
+diferente tipo de objetos.
+
+Con el comando `\listoftables` se puede agregar una lista de todas las tablas
+que se encuentran en el documento.
+
+**Observación:** por defecto el nombre de la tabla usado por `\caption` es
+_Table_ y el título del índice de figuras es _List of Tables_.
+Si se usa el paquete _babel_ configurado en el idioma español (es decir,
+`\usepackage[spanish]{babel}`), el nombre usado por `\caption` es _Cuadro_ y
+el título del índice de figuras se traduce a _Índice de cuadros_.
+
+Si se desea darle otro nombre tanto al subtítulo como al titulo del índice,
+basta con renombrarlos en el preambulo del archivo.
+
+```latex
+\addto\captionsspanish{
+  ···
+  \renewcommand\tablename{Tabla}
+  \renewcommand\listtablename{Lista de tablas}
+}
+```

@@ -4,6 +4,14 @@
 \usepackage[spanish]{babel} % Indica el idioma en que está escrito el documento
 \usepackage{graphicx}
 
+% Redefino algunos nombres para reemplazar los de Babel Spanish
+\addto\captionsspanish{
+  \renewcommand\figurename{Gráfico}
+  \renewcommand\listfigurename{Lista de gráficos}
+  \renewcommand\tablename{Tabla}
+  \renewcommand\listtablename{Lista de tablas}
+}
+
 \begin{document}
 
 % Ingreso contenido de la caratula estándar de Latex
@@ -16,6 +24,10 @@
 \newpage % Inicia una nueva página
 
 \tableofcontents % Genera la tabla de contenido del documento
+
+\listoffigures % Genera la lista de figuras del documento
+
+\listoftables % Genera la lista de tablas del documento
 
 \newpage % Inicia una nueva página
 
@@ -45,7 +57,7 @@ Con este ejemplo se aprende sobre LaTeX:
   \label{fig:logo_uba}
 \end{figure}
 
-Como se ve en la Figura \ref{fig:logo_uba}, el logo de la UBA posee el lema:
+Como se ve en el Gráfico \ref{fig:logo_uba}, el logo de la UBA posee el lema:
 
 \begin{center}
   \textit{Argentum virtus robur et studium}
@@ -53,6 +65,56 @@ Como se ve en la Figura \ref{fig:logo_uba}, el logo de la UBA posee el lema:
   <<La virtud argentina es la fuerza y el estudio>>
 \end{center}
 
-\listoffigures
+\section{Tablas}
+
+\subsection{Entorno tabular}
+
+\subsubsection{Tabla simple sin divisiones}
+
+\begin{tabular}{c c}
+1 & 2 \\
+3 & 4 \\
+\end{tabular}
+
+\subsubsection{Tabla con divisiones y fila de encabezado}
+
+\begin{tabular}{| l | c | r |}
+\hline
+Alpha & Beta & Gama \\
+\hline \hline
+1 & 2 & 3 \\
+\hline
+4 & 5 & 6 \\
+\hline
+\end{tabular}
+
+\subsubsection{Tabla con párrafo}
+
+\begin{tabular}{| l | p{2.5cm} |}
+\hline
+Item & Descripción \\
+\hline \hline
+1 & Descripción de la primer fila \\
+\hline
+4 & Descripción de la segunda fila \\
+\hline
+\end{tabular}
+
+\subsection{Entorno table}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{| l | p{2.5cm} |}
+  \hline
+  Item & Descripción \\
+  \hline \hline
+  1 & Descripción de la primer fila \\
+  \hline
+  4 & Descripción de la segunda fila \\
+  \hline
+  \end{tabular}
+  \caption{Tabla de ejemplo}
+  \label{tab:tabla}
+\end{table}
 
 \end{document}
