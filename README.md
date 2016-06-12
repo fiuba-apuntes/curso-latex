@@ -44,6 +44,7 @@ Incluso poseen la funcionalidad de edición colaborativa.
 ## Contenido del curso
 * [Unidad 1: Conceptos básicos](https://github.com/fiuba-apuntes/curso-latex/tree/master/01-conceptos-basicos)
 * [Unidad 2: Mejorando la presentación](https://github.com/fiuba-apuntes/curso-latex/tree/master/02-mejorando-presentacion)
+* [Unidad 3: Expresiones matemáticas y código de software](https://github.com/fiuba-apuntes/curso-latex/tree/master/03-matematica-y-codigo)
 
 ## Recursos
 Hay mucho material para aprender sobre LaTeX, se listarán a continuación algunos

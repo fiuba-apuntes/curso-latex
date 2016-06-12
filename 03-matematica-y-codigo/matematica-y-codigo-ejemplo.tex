@@ -2,9 +2,33 @@
 
 \usepackage[utf8]{inputenc} % Indica cuál es la codificación de este archivo
 \usepackage[spanish]{babel} % Indica el idioma en que está escrito el documento
-\usepackage[svgnames]{xcolor}
-\usepackage{amsmath} % Provee mejoras a los entornos matemáticos y fórmulas
+\usepackage[svgnames]{xcolor} % Permite usar colores en el documento
+\usepackage{amssymb} % Fuentes y símbolos adicionales (por AMS)
+\usepackage{amsmath} % Mejoras a entornos matemáticos y extras (por AMS)
 \usepackage{mathtools} % Correcciones a amsmath y funcionalidades extras
+\usepackage{listings} % Permite ingresar código fuente de software
+
+\lstset{ % Defino el formato de bloques de código fuente
+  inputencoding=utf8, % Indico la codificación de los archivos de entrada
+  extendedchars=true, % Extiendo los caracteres
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
+  showtabs=true, % Indica si se muestran los tabs
+  tab=\rightarrowfill, % Indica el caracter con el que se va a mostrar el tab
+  tabsize=2, % Indica la cantidad de espacios que ocupa un tab
+  showspaces=true, % Indica si muestra los espacios
+  showstringspaces=false, % Indica si muestra los espacios dentro de strings
+  numbers=left, % Posición en que se muestran los números de línea
+  numberstyle=\tiny\color{gray}, % Estilo de los números de línea
+  breaklines=true, % Se parten las líneas que exceden del ancho del documento
+  frame=single, % Formato del marco del entorno
+  backgroundcolor=\color{gray!5}, % Color de fondo
+  basicstyle=\ttfamily\footnotesize, % Estilo de base (familia, tamaño, color)
+  keywordstyle=\color{DarkBlue}, % Estilo de las palabras reservadas
+  stringstyle=\color{red}, % Estilo de los strings
+  commentstyle=\color{DarkGreen}, % Estilo de los comentarios
+  language=C, % Espeficica el lenguaje a usar
+  otherkeywords={std,cout} % Agrego palabras reservadas que no se resaltan
+}
 
 \begin{document}
 
@@ -37,11 +61,34 @@ es una función $f(x)$.
 
 La ecuación \eqref{eq:ecuacion} es una función $f(x)$.
 
-\subsection{Símbolos y funciones}
+\subsection{Nombre de funciones, fuentes y símbolos}
+
+\subsubsection{Algunos nombres de funciones}
 
 \[
   \cos (2\theta) = \cos^2 \theta - \sin^2 \theta
 \]
+
+
+\subsubsection{Fuentes adicionales provistas por AMS}
+
+\textbf{Letras ``Blackboard bold'' (sólo en mayúsculas)}
+
+$\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$ \\
+
+\textbf{Letras ``Euler Fraktur''}
+
+$\mathfrak{abcdefghijklmnopqrstuvwxyz}$
+
+$\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$ \\
+
+\textbf{Letras ``Euler Script'' (sólo en mayúsculas)}
+
+$\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+
+\subsubsection{Símbolos adicionales provistos por AMS}
+
+$\boxdot, \boxminus, \boxplus, \boxtimes, \Cap, \Cup$
 
 \subsection{Potencias, índices, raíces y fracciones}
 
@@ -175,6 +222,7 @@ Matriz encerrada entre paréntesis
 {\color{YellowGreen} Amarillo verde}
 
 \subsection{Usando los colores}
+
 \subsubsection{Formateo de texto}
 
 {\color{red} Grupo de texto con color rojo}
@@ -189,9 +237,44 @@ Matriz encerrada entre paréntesis
 
 \fcolorbox{blue}{green}{Texto con borde de color azul y fondo verde}
 
+\section{Código de software}
 
-\subsubsection{Fondo de página}
+\subsection{Entorno \texttt{verbatim}}
 
-\pagecolor{lightgray}
+\begin{verbatim}
+/* Hello World program */
+
+#include<stdio.h>
+
+main() {
+    printf("Hello World");
+}
+\end{verbatim}
+
+\subsection{Paquete \texttt{listing}}
+
+\subsubsection{Entorno \texttt{lstlisting}}
+
+\begin{lstlisting}
+/* Hello World program */
+
+#include<stdio.h>
+
+main() {
+    printf("Hello World");
+}
+\end{lstlisting}
+
+\subsubsection{Importar código desde un archivo externo}
+
+\textbf{Código de lenguaje C}
+
+\lstinputlisting[language=C]{main.c}
+
+~\\
+
+\textbf{Código de lenguaje C++}
+
+\lstinputlisting[language=C++, firstline=5, lastline=7]{main.cpp}
 
 \end{document}

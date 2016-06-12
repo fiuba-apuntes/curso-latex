@@ -2,7 +2,7 @@
 
 ## Índice
 * [Fórmulas matemáticas](#fórmulas-matemáticas)
-  + [Paquetes de la AMS](#paquetes-de-la-ams)
+  + [Paquetes para matemáticas](#paquetes-para-matemáticas)
   + [Entornos matemáticos](#entornos-matemáticos)
   + [Símbolos y funciones](#símbolos-y-funciones)
   + [Potencias, índices, raíces y fracciones](#potencias-índices-raíces-y-fracciones)
@@ -19,23 +19,37 @@ LaTeX), dado que en la época no existían herramientas para generar digitalment
 fórmulas matemáticas con calidad profesional. Actualmente sigue siendo la mejor
 herramienta para construir fórmulas matemáticas, potenciada con mejoras
 aportadas por paquetes desarrollados por la
-[American Mathematical Society](http://www.ams.org)
+[American Mathematical Society](http://www.ams.org) y otros.
 
 A continuación se hará una breve introducción a las expresiones matemáticas en
 LaTeX pero es altamente recomendable visitar los siguientes sitios webs:
 * [https://en.wikibooks.org/wiki/LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 * [https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics](https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics)
 
-### Paquetes de la AMS
+### Paquetes para matemáticas
 El desarrollo de documentos matemáticos mejora mucho con la ayuda de paquetes
-provistos por la American Mathematical Society (AMS).
+provistos por la American Mathematical Society (AMS) y otros.
 
 ```latex
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{mathtools}
 ```
+
+El paquete `amsfonts` provee fuentes y símbolos adicionales.
+Por ejemplo, para insertar el símbolo que representa a los números reales,
+se dispone de la familia de fuentes especial `mathbb`.
+Se usa de la forma `\mathbb{R}`, sólo dentro de entornos matemáticos.
+
+El paquete `amssymb` provee un conjunto adicional de símbolos.
+**Este paquete carga automáticamente el paquete `amsfonts`, por lo que se
+recomienda usar `amssymb` directamente**.
 
 El paquete `amsmath` provee mejoras a los entornos nativos de LaTeX e incluye
 los propios, entre otras herramientas útiles.
+**Es un paquete prácticamente obligatorio a la hora de trabajar con expresiones
+matemáticas**
 
 El paquete `mathtools` resuelve algunos errores del paquete `amsmath` y añade
 algunas funcionalidades. El paquete `mathtools` carga el paquete `amsmath` si no
@@ -198,7 +212,6 @@ También se puede definir colores como mezcla de los colores previamente definid
 ```latex
 \colorlet{colornuevo}{blue!20} % 20% azul y 80% blanco
 \colorlet{colornuevo}{blue!20!black} % 20% azul y 80% negro
-\colorlet{colornuevo}{blue!20!black} % 20% azul y 80% negro
 ```
 
 ### Formateo con colores
@@ -223,10 +236,86 @@ También se puede definir colores como mezcla de los colores previamente definid
 \fcolorbox{blue}{green}{Texto con borde de color azul y fondo verde}
 ```
 
-#### Fondo de página
+## Código de software
+Cuando se incluye código fuente de un software, se espera que el texto se
+formatee con una tipografía monoespaciada, respete los espacios de la
+indentación, entre otras cosas.
+
+### Entorno `verbatim`
+Es un entorno simple que formatea el texto que se encuentra dentro del mismo
+con una fuente monoespaciada y mantiene los espacios ingresados.
 
 ```latex
-\pagecolor{lightgray}
+\begin{verbatim}
+#include<stdio.h>
+main() {
+    printf("Hello World");
+}
+\end{verbatim}
 ```
 
-## Código de software
+### Paquete `listings`
+Es uno de los paquetes más populares para introducir código fuente a los
+documentos, ya que es muy flexible y personalizable.
+
+```latex
+\usepackage{listings}
+```
+
+Proporciona un entorno que se usa en forma similar a `verbatim`
+
+```latex
+\begin{lstlisting}
+#include<stdio.h>
+main() {
+    printf("Hello World");
+}
+\end{lstlisting}
+```
+
+Sin embargo, el paquete provee la posibilidad de importar el código directamente
+desde el archivo fuente.
+
+```latex
+\lstinputlisting{main.c}
+```
+
+Este comando puede recibir opciones.
+
+```latex
+\lstinputlisting[language=C, firstline=5, lastline=7]{main.c}
+```
+
+### Mejorando el estilo del código fuente
+Por defecto el código fuente se ingresa en blanco y negro.
+Sin embargo, se suele mejorar la presentación añadiendo número de líneas,
+colorear sintaxis, etc.
+
+Para ello se puede configurar listing de la siguiente forma
+
+```latex
+\lstset{ % Defino el formato de bloques de código fuente
+  inputencoding=utf8, % Indico la codificación de los archivos de entrada
+  extendedchars=true, % Extiendo los caracteres
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
+  showtabs=true, % Indica si se muestran los tabs
+  tab=\rightarrowfill, % Indica el caracter con el que se va a mostrar el tab
+  tabsize=2, % Indica la cantidad de espacios que ocupa un tab
+  showspaces=true, % Indica si muestra los espacios
+  showstringspaces=false, % Indica si muestra los espacios dentro de strings
+  numbers=left, % Posición en que se muestran los números de línea
+  numberstyle=\tiny\color{gray}, % Estilo de los números de línea
+  breaklines=true, % Se parten las líneas que exceden del ancho del documento
+  frame=single, % Formato del marco del entorno
+  backgroundcolor=\color{gray!5}, % Color de fondo
+  basicstyle=\ttfamily\footnotesize, % Estilo de base (familia, tamaño, color)
+  keywordstyle=\color{DarkBlue}, % Estilo de las palabras reservadas
+  stringstyle=\color{red}, % Estilo de los strings
+  commentstyle=\color{DarkGreen}, % Estilo de los comentarios
+  language=C, % Espeficica el lenguaje a usar
+  otherkeywords={std,cout} % Agrego palabras reservadas que no se resaltan
+}
+```
+
+
+
