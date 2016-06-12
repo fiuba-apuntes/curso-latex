@@ -127,7 +127,7 @@ adecuado según el contexto.
 
 Las opciones más populares para ajustar un gráfico:
 
-| Option         | Comentario                                                    |
+| Opción         | Comentario                                                    |
 | -------------- | ------------------------------------------------------------- |
 | `width=xx`     | Especifica el ancho preferido de la imagen a xx               |
 | `height=xx`    | Especifica el alto preferido de la imagen a xx                |

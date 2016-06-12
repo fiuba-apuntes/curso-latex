@@ -1,0 +1,197 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc} % Indica cuál es la codificación de este archivo
+\usepackage[spanish]{babel} % Indica el idioma en que está escrito el documento
+\usepackage[svgnames]{xcolor}
+\usepackage{amsmath} % Provee mejoras a los entornos matemáticos y fórmulas
+\usepackage{mathtools} % Correcciones a amsmath y funcionalidades extras
+
+\begin{document}
+
+\section{Fórmulas matemáticas}
+
+\subsection{Entornos matemáticos}
+
+\subsubsection{Entorno en línea}
+
+La funcion $f(x)$ es $f(x)=ax+b$.
+
+\subsubsection{Entorno ecuación (sin numerar)}
+La ecuación
+
+\[
+  f(x)=ax+b
+\]
+
+es una función $f(x)$.
+
+\[
+  10 \text{ manzanas} + 10 \text{ manzanas} = 20 \text{ manzanas}
+\]
+
+\subsubsection{Entorno ecuación}
+
+\begin{equation} \label{eq:ecuacion}
+  f(x) = ax + b
+\end{equation}
+
+La ecuación \eqref{eq:ecuacion} es una función $f(x)$.
+
+\subsection{Símbolos y funciones}
+
+\[
+  \cos (2\theta) = \cos^2 \theta - \sin^2 \theta
+\]
+
+\subsection{Potencias, índices, raíces y fracciones}
+
+\subsubsection{Potencias e índices}
+
+\begin{equation*}
+  k_{n+1} = n^2 + k_n^2 - k_{n-1}
+\end{equation*}
+
+\subsubsection{Raíces}
+
+\begin{equation*}
+  \sqrt{4} = 2
+\end{equation*}
+
+\begin{equation*}
+  \sqrt[3]{8} = 2
+\end{equation*}
+
+\subsubsection{Fracciones}
+
+\begin{equation*}
+  \frac{\frac{1}{x}+\frac{1}{y}}{y-z}
+\end{equation*}
+
+\subsection{Matrices}
+
+\begin{equation*}
+  \begin{matrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{matrix}
+\end{equation*}
+
+Matriz encerrada entre paréntesis
+
+\begin{equation*}
+  \begin{bmatrix*}[r]
+    -1 & 3  \\
+    2  & -4
+  \end{bmatrix*}
+\end{equation*}
+
+\begin{equation*}
+  A_{m,n} = 
+    \begin{pmatrix}
+      a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+      a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+    \end{pmatrix}
+\end{equation*}
+
+\section{Colores}
+
+\subsection{Colores disponibles por defecto de \texttt{xcolor}}
+
+{\color{red} Rojo}
+
+{\color{green} Verde}
+
+{\color{blue} Azul}
+
+{\color{cyan} Cyan}
+
+{\color{magenta} Magenta}
+
+{\color{yellow} Amarillo}
+
+{\color{black} Negro}
+
+{\color{darkgray} Gris oscuro}
+
+{\color{gray} Gris}
+
+{\color{lightgray} Gris claro}
+
+{\color{white} Blanco} (Blanco)
+
+{\color{brown} Marron}
+
+{\color{lime} Lima}
+
+{\color{olive} Oliva}
+
+{\color{orange} Naranja}
+
+{\color{pink} Rosa}
+
+{\color{purple} Púrpura}
+
+{\color{teal} Verde azulado}
+
+{\color{violet} Violeta}
+
+\subsection{Algunos colores adicionales incluidos por la opción \texttt{svgnames}}
+
+{\color{Aquamarine} Agua marina}
+
+{\color{Chocolate} Chocolate}
+
+{\color{Crimson} Crimson}
+
+{\color{GreenYellow} Verde amarillo}
+
+{\color{DarkBlue} Azul oscuro}
+
+{\color{LightBlue} Azul claro}
+
+{\color{DarkCyan} Cyan oscuro}
+
+{\color{LightCyan} Cyan claro}
+
+{\color{DarkGreen} Verde oscuro}
+
+{\color{LightGreen} Verde claro}
+
+{\color{DarkMagenta} Magenta oscuro}
+
+{\color{DarkOrange} Naranja oscuro}
+
+{\color{DarkRed} Rojo oscuro}
+
+{\color{Salmon} Salmón}
+
+{\color{SkyBlue} Azul cielo}
+
+{\color{Tomato} Tomate}
+
+{\color{YellowGreen} Amarillo verde}
+
+\subsection{Usando los colores}
+\subsubsection{Formateo de texto}
+
+{\color{red} Grupo de texto con color rojo}
+
+\textcolor{blue}{Comando con color azul para texto}
+
+\colorbox{green}{Texto con fondo verde}
+
+\colorbox{black}{\color{white} Texto blanco con fondo negro}
+
+\fcolorbox{red}{white}{Texto con borde de color rojo}
+
+\fcolorbox{blue}{green}{Texto con borde de color azul y fondo verde}
+
+
+\subsubsection{Fondo de página}
+
+\pagecolor{lightgray}
+
+\end{document}
