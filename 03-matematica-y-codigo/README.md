@@ -407,8 +407,8 @@ main() {
 ]{script.rb}
 ```
 
-Con el comando `\listoffigures` se puede agregar una lista de todas las figuras
-que se encuentran en el documento.
+Con el comando `\lstlistoflistings` se puede agregar un índice de todos los
+listados de código que se encuentran en el documento.
 
 **Observación:** por defecto el nombre del listado de código usado por `caption`
 es _Listing_ y el título del índice de listado de código es _Listings_.
