@@ -8,14 +8,17 @@
 \usepackage{mathtools} % Correcciones a amsmath y funcionalidades extras
 \usepackage{listings} % Permite ingresar código fuente de software
 
+% Redefino algunos nombres para reemplazar los de Babel Spanish
+\addto\captionsspanish{
+  \renewcommand\lstlistingname{Código}
+  \renewcommand\lstlistlistingname{Lista de código}
+}
+
 \lstset{ % Defino el formato de bloques de código fuente
   inputencoding=utf8, % Indico la codificación de los archivos de entrada
   extendedchars=true, % Extiendo los caracteres
   literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
-  showtabs=true, % Indica si se muestran los tabs
-  tab=\rightarrowfill, % Indica el caracter con el que se va a mostrar el tab
-  tabsize=2, % Indica la cantidad de espacios que ocupa un tab
-  showspaces=true, % Indica si muestra los espacios
+  inputpath={codigo},
   showstringspaces=false, % Indica si muestra los espacios dentro de strings
   numbers=left, % Posición en que se muestran los números de línea
   numberstyle=\tiny\color{gray}, % Estilo de los números de línea
@@ -23,11 +26,22 @@
   frame=single, % Formato del marco del entorno
   backgroundcolor=\color{gray!5}, % Color de fondo
   basicstyle=\ttfamily\footnotesize, % Estilo de base (familia, tamaño, color)
-  keywordstyle=\color{DarkBlue}, % Estilo de las palabras reservadas
-  stringstyle=\color{red}, % Estilo de los strings
-  commentstyle=\color{DarkGreen}, % Estilo de los comentarios
-  language=C, % Espeficica el lenguaje a usar
+}
+
+\lstdefinestyle{cpp}{
+  tabsize=4,
+  language=C++,
+  keywordstyle=\color{DarkGreen}, % Estilo de las palabras reservadas
+  stringstyle=\color{DarkBlue}, % Estilo de los strings
+  commentstyle=\color{DarkGray}, % Estilo de los comentarios
   otherkeywords={std,cout} % Agrego palabras reservadas que no se resaltan
+}
+
+\lstdefinestyle{ruby}{
+  language=Ruby,
+  keywordstyle=\color{DarkMagenta}, % Estilo de las palabras reservadas
+  stringstyle=\color{DarkBlue}, % Estilo de los strings
+  commentstyle=\color{DarkGray} % Estilo de los comentarios
 }
 
 \begin{document}
@@ -255,7 +269,7 @@ main() {
 
 \subsubsection{Entorno \texttt{lstlisting}}
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Código C},label={lst:codigoc}]
 /* Hello World program */
 
 #include<stdio.h>
@@ -269,12 +283,33 @@ main() {
 
 \textbf{Código de lenguaje C}
 
-\lstinputlisting[language=C]{main.c}
+\lstinputlisting[
+  language=C,
+  caption={Código C importado},
+  label={lst:codigocimportado}
+]{main.c}
 
 ~\\
 
 \textbf{Código de lenguaje C++}
 
-\lstinputlisting[language=C++, firstline=5, lastline=7]{main.cpp}
+\lstinputlisting[
+  style=cpp,
+  caption={Código C++ importado},
+  label={lst:codigocpp}
+]{main.cpp}
+
+~\\
+
+\textbf{Código de lenguaje Ruby}
+
+\lstinputlisting[
+  style=ruby,
+  caption={Código Ruby},
+  label={lst:codigoruby}
+]{script.rb}
+
+\subsubsection{Indice de códigos}
+\lstlistoflistings
 
 \end{document}

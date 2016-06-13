@@ -317,5 +317,99 @@ Para ello se puede configurar listing de la siguiente forma
 }
 ```
 
+Si embargo, toda esa configuración es global para todo el documento.
+Es decir, todo el código presentado en el documento va a tener el mismo estilo.
+Suele ocurrir que distintos lenguajes tienen combinaciones de colores distintos
+para el resaltado de sintaxis.
+Para resolver esto, se pueden definir diferentes estilos para cada lenguaje.
 
+```latex
+\lstset{ % Defino el formato de bloques de código fuente
+  inputencoding=utf8, % Indico la codificación de los archivos de entrada
+  extendedchars=true, % Extiendo los caracteres
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
+  showstringspaces=false, % Indica si muestra los espacios dentro de strings
+  numbers=left, % Posición en que se muestran los números de línea
+  numberstyle=\tiny\color{gray}, % Estilo de los números de línea
+  breaklines=true, % Se parten las líneas que exceden del ancho del documento
+  frame=single, % Formato del marco del entorno
+  backgroundcolor=\color{gray!5}, % Color de fondo
+  basicstyle=\ttfamily\footnotesize, % Estilo de base (familia, tamaño, color)
+}
 
+\lstdefinestyle{cpp}{
+  tabsize=4,
+  language=C++,
+  keywordstyle=\color{DarkGreen}, % Estilo de las palabras reservadas
+  stringstyle=\color{DarkBlue}, % Estilo de los strings
+  commentstyle=\color{DarkGray}, % Estilo de los comentarios
+  otherkeywords={std,cout} % Agrego palabras reservadas que no se resaltan
+}
+
+\lstdefinestyle{ruby}{
+  language=Ruby,
+  keywordstyle=\color{DarkMagenta}, % Estilo de las palabras reservadas
+  stringstyle=\color{DarkBlue}, % Estilo de los strings
+  commentstyle=\color{DarkGray} % Estilo de los comentarios
+}
+```
+
+Se define el estilo a usar con la opción `style`.
+
+```latex
+\lstinputlisting[style=cpp]{main.cpp}
+
+\lstinputlisting[style=ruby]{script.rb}
+```
+
+### Agregando un subtítulo y etiqueta de referencia
+De forma similar a otros objetos flotantes de LaTeX, los listados de código
+son automáticamente numerados según el `caption` definido.
+El `label` sirve para darle al listado un indicador único y poder
+ser referido a él en el cuerpo de un texto con el comando `\ref{lst:codigo}`,
+que inserta el número correspondiente a esa figura.
+El identificador de `label` puede ser cualquier texto, pero por
+convención, se le añade el prefijo **lst:** para reconocer rápidamente que
+se está referenciando a un listado de código, útil cuando se utilizan
+referencias a diferente tipo de objetos.
+
+En otros objetos hemos visto que `capation` y `label` se ingresa mediante
+comandos. Sin embargo, para el listado de código, ambos datos se ingresan
+mediante las opciones.
+
+```latex
+\begin{lstlisting}[caption={Código C},label={lst:codigoc}]
+/* Hello World program */
+
+#include<stdio.h>
+
+main() {
+    printf("Hello World");
+}
+\end{lstlisting}
+
+\lstinputlisting[
+  style=ruby,
+  caption={Código Ruby},
+  label={lst:codigoruby}
+]{script.rb}
+```
+
+Con el comando `\listoffigures` se puede agregar una lista de todas las figuras
+que se encuentran en el documento.
+
+**Observación:** por defecto el nombre del listado de código usado por `caption`
+es _Listing_ y el título del índice de listado de código es _Listings_.
+Si se usa el paquete _babel_ configurado en el idioma español (es decir,
+`\usepackage[spanish]{babel}`), los nombres no se traducen (no se encuentran
+definidas versiones españolas para esos nombres).
+
+Si se desea darle otro nombre tanto al subtítulo como al titulo del índice,
+basta con renombrarlos en el preambulo del archivo.
+
+```latex
+\addto\captionsspanish{
+  \renewcommand\lstlistingname{Código}
+  \renewcommand\lstlistlistingname{Lista de código}
+}
+```
