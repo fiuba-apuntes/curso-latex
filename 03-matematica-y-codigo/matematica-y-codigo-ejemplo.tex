@@ -17,8 +17,13 @@
 \lstset{ % Defino el formato de bloques de código fuente
   inputencoding=utf8, % Indico la codificación de los archivos de entrada
   extendedchars=true, % Extiendo los caracteres
-  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
-  inputpath={codigo},
+  % Escapeo caracteres especiales
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+           {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+           {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+           {ñ}{{\~n}}1 {Ñ}{{\~N}}1,
+  inputpath={codigo}, % Defino la ruta en la que se encuentran los archivos
   showstringspaces=false, % Indica si muestra los espacios dentro de strings
   numbers=left, % Posición en que se muestran los números de línea
   numberstyle=\tiny\color{gray}, % Estilo de los números de línea

@@ -11,6 +11,10 @@
   + [Definir colores personalizados](#definir-colores-personalizados)
   + [Formateo con colores](#formateo-con-colores)
 * [Código de software](#código-de-software)
+  + [Entorno `verbatim`](#entorno-verbatim)
+  + [Paquete `listings`](#paquete-listings)
+  + [Mejorando el estilo del código fuente](#mejorando-el-estilo-del-código-fuente)
+  + [Agregando un subtítulo y etiqueta de referencia](#agregando-un-subtítulo-y-etiqueta-de-referencia)
 
 ## Fórmulas matemáticas
 Las fórmulas matemáticas son soportadas nativamente por LaTeX y es una de las
@@ -262,7 +266,7 @@ documentos, ya que es muy flexible y personalizable.
 \usepackage{listings}
 ```
 
-Proporciona un entorno que se usa en forma similar a `verbatim`
+Proporciona un entorno que se usa en forma similar a `verbatim`.
 
 ```latex
 \begin{lstlisting}
@@ -291,13 +295,16 @@ Por defecto el código fuente se ingresa en blanco y negro.
 Sin embargo, se suele mejorar la presentación añadiendo número de líneas,
 colorear sintaxis, etc.
 
-Para ello se puede configurar listing de la siguiente forma
+Para ello se puede configurar `listings` con el comando `lstset` (recordar
+hacerlo en el preambulo).
 
 ```latex
 \lstset{ % Defino el formato de bloques de código fuente
   inputencoding=utf8, % Indico la codificación de los archivos de entrada
   extendedchars=true, % Extiendo los caracteres
-  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
+  % Escapeo caracteres especiales
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1,
+  inputpath={codigo}, % Defino la ruta en la que se encuentran los archivos
   showtabs=true, % Indica si se muestran los tabs
   tab=\rightarrowfill, % Indica el caracter con el que se va a mostrar el tab
   tabsize=2, % Indica la cantidad de espacios que ocupa un tab
@@ -321,13 +328,17 @@ Si embargo, toda esa configuración es global para todo el documento.
 Es decir, todo el código presentado en el documento va a tener el mismo estilo.
 Suele ocurrir que distintos lenguajes tienen combinaciones de colores distintos
 para el resaltado de sintaxis.
-Para resolver esto, se pueden definir diferentes estilos para cada lenguaje.
+Para resolver esto, se pueden definir diferentes estilos con el comando
+`\lstdefinestyle` para cada lenguaje, pudiendo mantener cierta configuración
+de forma global dentro de `lstset`.
 
 ```latex
 \lstset{ % Defino el formato de bloques de código fuente
   inputencoding=utf8, % Indico la codificación de los archivos de entrada
   extendedchars=true, % Extiendo los caracteres
-  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1, % Escapeo caracteres especiales
+  % Escapeo caracteres especiales
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1,
+  inputpath={codigo}, % Defino la ruta en la que se encuentran los archivos
   showstringspaces=false, % Indica si muestra los espacios dentro de strings
   numbers=left, % Posición en que se muestran los números de línea
   numberstyle=\tiny\color{gray}, % Estilo de los números de línea
@@ -354,7 +365,8 @@ Para resolver esto, se pueden definir diferentes estilos para cada lenguaje.
 }
 ```
 
-Se define el estilo a usar con la opción `style`.
+Al usar un entorno o importar un archivo, se define el estilo a usar con la
+opción `style`.
 
 ```latex
 \lstinputlisting[style=cpp]{main.cpp}
